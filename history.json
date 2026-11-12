@@ -1,0 +1,108 @@
+{
+ "stops": [
+  {
+   "n": 1,
+   "year": "1974",
+   "title": "Ettenbüttel",
+   "text": "Ettenbüttel ist ein Ortsteil von Müden (Aller) im Landkreis Gifhorn, südöstlich des Kernorts. Am 1. März 1974 wurde es mit Dieckhorst, Flettmar und Hahnenhorn nach Müden eingemeindet. Am 1. Mai 2024 lebten hier 644 Menschen. 1668 notierte der Müder Pastor Heinrich Hoffmann, die Einwohner von Ettenbüttel zahlten noch den Zehnten, weil der Ort früher zur Pfarrei Müden gehört hatte. St. Petri, die Kirche des Kernorts, liegt etwa fünf Kilometer nordwestlich und nicht auf diesem Blatt.",
+   "x": 595613.9,
+   "y": 5817688.8,
+   "h": 0,
+   "zoom": 0.28,
+   "source": {
+    "label": "Wikipedia",
+    "url": "https://de.wikipedia.org/wiki/Ettenb%C3%BCttel"
+   },
+   "more": "https://de.wikipedia.org/wiki/M%C3%BCden_(Aller)",
+   "photos": [
+    {
+     "src": "history/01_0.jpg?v=ecd65d3f",
+     "credit": "Ettenbüttel, Kirchenfan, CC0",
+     "url": "https://commons.wikimedia.org/wiki/File:Ettenb%C3%BCttel%20W.jpg"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "year": "Baudenkmal",
+   "title": "Allertal 15",
+   "text": "An der Allertal 15, der Landesstraße durch Ettenbüttel, steht ein eingeschossiges Vierständer-Hallenhaus mit Ziegelausfachung und Krüppelwalmdach, die Einfahrt in der Mitte der Längsseite. Es ist ein eingetragenes Baudenkmal. Wann es gebaut wurde, sagt diese Karte nicht.",
+   "x": 595613.9,
+   "y": 5817688.8,
+   "h": 8,
+   "zoom": 1.2,
+   "source": {
+    "label": "Denkmalatlas Niedersachsen",
+    "url": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934218/1/-/"
+   },
+   "more": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934218/1/-/",
+   "photos": [
+    {
+     "src": "history/02_0.jpg?v=ecd65d3f",
+     "credit": "Allertal 15, Simone Thulke, CC BY 4.0",
+     "url": "https://commons.wikimedia.org/wiki/File:Ettenb%C3%BCttel%20Allertal%2015%20NLD%2033934218.jpg"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "year": "Baudenkmal",
+   "title": "Speicher Bokelberge",
+   "text": "In Bokelberge, nördlich von Ettenbüttel, steht ein zweigeschossiger Fachwerkspeicher mit vorkragendem Obergeschoss unter einem Satteldach. Eingetragenes Baudenkmal.",
+   "x": 595484.1,
+   "y": 5818615.3,
+   "h": 8,
+   "zoom": 1.2,
+   "source": {
+    "label": "Denkmalatlas Niedersachsen",
+    "url": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934711/1/-/"
+   },
+   "more": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934711/1/-/",
+   "photos": [
+    {
+     "src": "history/04_0.jpg?v=ecd65d3f",
+     "credit": "Speicher Bokelberge, Simone Thulke, CC BY 4.0",
+     "url": "https://commons.wikimedia.org/wiki/File:Ettenb%C3%BCttel%20Bockelberg%2002%20NLD%2033934711.jpg"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "year": "Baudenkmal",
+   "title": "Hirtenwinkel 4",
+   "text": "Hirtenwinkel 4 ist ebenfalls ein Vierständer-Hallenhaus, mit Ziegelausfachung unter einem Halbwalmdach und einem quergestellten Stallanbau. Eingetragenes Baudenkmal.",
+   "x": 595757.4,
+   "y": 5817447.8,
+   "h": 8,
+   "zoom": 1.2,
+   "source": {
+    "label": "Denkmalatlas Niedersachsen",
+    "url": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934242/1/-/"
+   },
+   "more": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934242/1/-/",
+   "photos": [
+    {
+     "src": "history/03_0.jpg?v=ecd65d3f",
+     "credit": "Hirtenwinkel 4, Simone Thulke, CC BY 4.0",
+     "url": "https://commons.wikimedia.org/wiki/File:Ettenb%C3%BCttel%20Hirtenwinkel%2004%20NLD%2033934242.jpg"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "year": "heute",
+   "title": "Ettenbüttel heute",
+   "text": "Die Karte öffnet am Wohnhaus Grüne Heide 18. Auf diesem Blatt liegen Ettenbüttel, die Grüne Heide und Bokelberge. Der Kernort Müden mit St. Petri liegt etwa fünf Kilometer nordwestlich, außerhalb. Was nur die Leute hier wissen, fehlt noch: das Fest, die Badestelle, die Namen der Höfe.",
+   "x": 596560.3,
+   "y": 5817064.4,
+   "h": 0,
+   "zoom": 0.45,
+   "source": {
+    "label": "Wikipedia",
+    "url": "https://de.wikipedia.org/wiki/Ettenb%C3%BCttel"
+   },
+   "more": "https://de.wikipedia.org/wiki/Ettenb%C3%BCttel",
+   "photos": []
+  }
+ ]
+}
