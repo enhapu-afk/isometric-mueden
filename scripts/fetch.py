@@ -2,7 +2,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["numpy", "rasterio", "shapely", "tifffile"]
 # ///
-"""Download the open data for Langlingen and lay it out the way the rest of the pipeline expects.
+"""Download the open data for Ettenbüttel, in Müden (Aller), and lay it out the way the rest of the pipeline expects.
 
 Niedersachsen, all CC BY 4.0, Landesamt für Geoinformation und Landesvermessung
 Niedersachsen (LGLN), in ETRS89 / UTM zone 32N:
@@ -32,7 +32,7 @@ import tifffile
 from config import CHUNK, NX, NY, RAW, XMAX, XMIN, YMAX, YMIN, write_area
 from geo import utm_to_wgs, wgs_to_utm
 
-UA = {"User-Agent": "isometric-langlingen/0.1 (personal map; https://github.com/enhapu-afk)"}
+UA = {"User-Agent": "isometric-mueden/0.1 (personal map; https://github.com/enhapu-afk)"}
 TILE = re.compile(r"32_(\d{3})_(\d{4})_")
 WMS = "https://opendata.lgln.niedersachsen.de/doorman/noauth/dop_wms"
 

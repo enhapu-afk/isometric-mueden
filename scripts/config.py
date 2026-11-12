@@ -1,9 +1,8 @@
 """Shared settings: the area we render, in ETRS89 / UTM zone 32N (EPSG:25832) metres.
 
-Langlingen, Landkreis Celle, Niedersachsen. The box is 2.5 x 2.5 km around the
-village on the Aller: St. Johannis and the Rittergut sit near the middle, the
-Grundschule and the old station road to the south, fields and the river plain
-around them.
+Ettenbüttel, an Ortsteil of Müden (Aller), Landkreis Gifhorn. The box is
+3.5 x 3.5 km around Grüne Heide. The Kernort of Müden, with St. Petri and the
+mouth of the Oker, is about five kilometres northwest and is not on this sheet.
 """
 
 import json
@@ -13,13 +12,13 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 BUILD = ROOT / "data" / "build"
 
-# Aligned to the 500 m chunk grid. Church of St. Johannis is at about 587350, 5823707.
-XMIN, YMIN, XMAX, YMAX = 586000, 5822500, 588500, 5825000
+# Aligned to the 500 m chunk grid. Grüne Heide 18 is at about 596560, 5817064.
+XMIN, YMIN, XMAX, YMAX = 595000, 5815500, 598500, 5819000
 CX, CY = (XMIN + XMAX) / 2, (YMIN + YMAX) / 2
 
-# Where the map opens, and the centre the evening street lamps gather around.
-HOME_X, HOME_Y = 587349.8, 5823707.4
-VILLAGE_X, VILLAGE_Y = 587349.8, 5823707.4
+# The map opens at the house. The evening lamps gather on the through-road, Allertal.
+HOME_X, HOME_Y = 596560.3, 5817064.4
+VILLAGE_X, VILLAGE_Y = 595613.9, 5817688.8
 
 # Downloads and ground textures come in square chunks of this many meters.
 CHUNK = 500

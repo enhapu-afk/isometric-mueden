@@ -1,5 +1,5 @@
 // Isometric scene of Helenaveen, rendered tile by tile by render/run.mjs.
-// World units are meters: x east, y up, z south, origin at the center of the 2.5 km area around Langlingen.
+// World units are meters: x east, y up, z south, origin at the center of the 3.5 km area around Ettenbüttel.
 import * as THREE from 'three';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
 

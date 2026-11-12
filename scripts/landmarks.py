@@ -2,12 +2,11 @@
 # requires-python = ">=3.11"
 # dependencies = ["numpy"]
 # ///
-"""Named places of Langlingen: colours and type for a few buildings, and the viewer's place list.
+"""Named places of Ettenbüttel, in Müden (Aller): colours for a few listed buildings, and the place list.
 
-The stories are the public ones: the church and the manor from the village's own
-pages and the listed-building record, the dates on the timber houses from the
-Niedersachsen monument register. Anything only a neighbour would know is left
-out on purpose.
+The stories are the public ones, from the Niedersachsen monument register and the
+municipality's record of the 1974 incorporation. The house the map opens on has
+no story beyond its address. Anything only a neighbour would know is left out.
 
 Output: data/build/landmarks.json
 """
@@ -17,133 +16,74 @@ import json
 import numpy as np
 
 from citygml import load_buildings
-from config import BUILD, RAW, XMAX, XMIN, YMAX, YMIN
+from config import BUILD, RAW, VILLAGE_X, VILLAGE_Y, XMAX, XMIN, YMAX, YMIN
 from geo import wgs_to_rd
 
-# Brick and dark slate for St. Johannis, cream plaster for the manor. The other
-# roofs take their colour from the aerial photo.
-CHURCH_WALL, CHURCH_ROOF = (148, 72, 58), (70, 74, 80)
-MANOR_WALL, MANOR_ROOF = (232, 224, 206), (72, 68, 64)
-FRAME_WALL, FRAME_TIMBER = (228, 214, 190), (92, 64, 44)
+# Brick infill and dark timber, as the monument record describes the hall houses.
+# Roofs without an explicit colour take theirs from the aerial photo.
+FRAME_WALL, FRAME_TIMBER = (176, 92, 72), (92, 64, 44)
 
 BUILDINGS = [
     {
-        "name": "St. Johannis",
-        "note": "Backsteinkirche mit Dachreiter",
-        "kind": "Kirche · seit 1257",
-        "latlon": (52.556418, 10.288447),
-        "style": "church",
-        "wall": CHURCH_WALL,
-        "roof": CHURCH_ROOF,
-        "text": "Die Pfarrei wurde 1257 von der Mutterkirche in Wienhausen getrennt. Im alten Chor saß ein Stein mit der Jahreszahl 1338. 1668 kamen ein hölzerner Anbau im Westen und ein verschalter Dachreiter dazu, 1783 erneuert, mit einer achteckigen Schieferhaube. Bei der Ausbesserung von 1994 bis 1996 kam unter der Decke ein gemalter Engelhimmel wieder zum Vorschein. Der Altar ist von 1675, die Kanzel von 1670, die Orgel ein Werk von Furtwängler aus dem Jahr 1854.",
-        "web": "https://kirche-langlingen.wir-e.de/aktuelles",
-        "more": "https://de.wikipedia.org/wiki/St._Johannis_(Langlingen)",
-        "stop": "St. Johannis",
-    },
-    {
-        "name": "Rittergut Langlingen",
-        "note": "Herrenhaus von 1725",
-        "kind": "Herrenhaus · 1725",
-        "latlon": (52.557263, 10.288209),
-        "style": "house",
-        "wall": MANOR_WALL,
-        "roof": MANOR_ROOF,
-        "text": "Das barocke Herrenhaus ließ Ernst Wilhelm von Spörcken 1725 bauen: zwei Geschosse, elf Achsen, Fachwerk, das unter dem Putz wie Stein wirken sollte, mit Mansarddach und einem Türmchen auf dem rechten Flügel. Die von Spörcken hatten das Gut seit dem 14. Jahrhundert. 1827 kaufte es der Pächter Anton Ludwig Wilhelm Mylius, und die Familie Mylius bewirtschaftet es noch. Der Park nördlich des Hauses, am Franzosengraben, ist nicht öffentlich.",
-        "more": "https://de.wikipedia.org/wiki/Rittergut_Langlingen",
-        "stop": "Rittergut",
-    },
-    {
-        "name": "Hauptstraße 46",
-        "note": "Wohn- und Wirtschaftsgebäude",
-        "kind": "Fachwerk · 1619",
-        "addr": "Hauptstraße 46",
+        "name": "Allertal 15",
+        "note": "Vierständer-Hallenhaus",
+        "kind": "Baudenkmal",
+        "latlon": (52.500937, 10.408575),
         "style": "house",
         "wall": FRAME_WALL,
         "frame": FRAME_TIMBER,
-        "text": "Ein Wohn- und Wirtschaftsgebäude von 1619, in Fachwerk, und ein eingetragenes Baudenkmal. Es gehört zu den ältesten Häusern, die im Dorf noch stehen.",
-        "stop": "Fachwerk an der Hauptstraße",
+        "text": "An der Allertal 15, der Landesstraße durch Ettenbüttel, steht ein eingeschossiges Vierständer-Hallenhaus mit Ziegelausfachung und Krüppelwalmdach, die Einfahrt in der Mitte der Längsseite. Es ist ein eingetragenes Baudenkmal. Wann es gebaut wurde, sagt diese Karte nicht.",
+        "more": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934218/1/-/",
+        "stop": "Allertal 15",
     },
     {
-        "name": "Hauptstraße 54",
-        "note": "Fachwerkhaus",
-        "kind": "Fachwerk · 1776",
-        "addr": "Hauptstraße 54",
+        "name": "Hirtenwinkel 4",
+        "note": "Vierständer-Hallenhaus",
+        "kind": "Baudenkmal",
+        "latlon": (52.498746, 10.410619),
         "style": "house",
         "wall": FRAME_WALL,
         "frame": FRAME_TIMBER,
-        "text": "Fachwerkhaus von 1776, ebenfalls eingetragenes Baudenkmal, ein Stück weiter die Hauptstraße hinunter.",
+        "text": "Hirtenwinkel 4 ist ebenfalls ein Vierständer-Hallenhaus, mit Ziegelausfachung unter einem Halbwalmdach und einem quergestellten Stallanbau. Eingetragenes Baudenkmal.",
+        "more": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934242/1/-/",
+        "stop": "Hirtenwinkel 4",
     },
     {
-        "name": "Dorfmuseum",
-        "note": "Hauptstraße 44",
-        "kind": "Museum",
-        "addr": "Hauptstraße 44",
+        "name": "Speicher Bokelberge",
+        "note": "Bokelberge 2",
+        "kind": "Speicher · Baudenkmal",
+        "latlon": (52.509287, 10.406929),
         "style": "house",
         "wall": FRAME_WALL,
         "frame": FRAME_TIMBER,
-        "text": "Das Dorfmuseum in der Hauptstraße 44 sammelt, was vom alten Langlingen geblieben ist. Was in den Vitrinen liegt, wissen die Leute hier besser als diese Karte.",
-        "stop": "Dorfmuseum",
-    },
-    {
-        "name": "allerHaus",
-        "note": "Kirchstraße 1",
-        "kind": "Pfarrhaus · 1878",
-        "addr": "Kirchstraße 1",
-        "style": "house",
-        "wall": (214, 206, 190),
-        "roof": (120, 72, 56),
-        "text": "An der Kirchstraße 1 stehen das Pfarrhaus von 1878 und die Scheune von etwa 1880, die heute das Gemeindehaus ist. Im Dorf heißt das Ensemble allerHaus.",
-        "web": "https://www.allerhaus.de",
-    },
-    {
-        "name": "Ehemaliges Küsterhaus",
-        "note": "Kirchstraße 3",
-        "kind": "Küsterhaus · 1911",
-        "addr": "Kirchstraße 3",
-        "style": "house",
-        "wall": (220, 214, 200),
-        "text": "1911 als Wohnung für den Küster und den Lehrer gebaut. Heute ist hier ein Gesundheitszentrum.",
-    },
-    {
-        "name": "Grundschule Langlingen",
-        "note": "Bahnhofstraße 6",
-        "kind": "Grundschule",
-        "addr": "Bahnhofstraße 6",
-        "style": "school",
-        "wall": (222, 216, 202),
-        "text": "Die Grundschule des Dorfs, Bahnhofstraße 6. Wann sie gegründet wurde und welche Farbe die Fassade wirklich hat, steht hier nicht: das wissen die, die hingegangen sind.",
-        "stop": "Die Schule",
+        "text": "In Bokelberge, nördlich von Ettenbüttel, steht ein zweigeschossiger Fachwerkspeicher mit vorkragendem Obergeschoss unter einem Satteldach. Eingetragenes Baudenkmal.",
+        "more": "https://denkmalatlas.niedersachsen.de/viewer/metadata/33934711/1/-/",
+        "stop": "Speicher Bokelberge",
     },
 ]
 
 POINTS = [
     {
-        "name": "Freiwillige Feuerwehr",
-        "latlon": (52.5558417, 10.2826078),
-        "kind": "Feuerwehr",
-        "address": "Am Flootgarten",
-        "text": "Die Freiwillige Feuerwehr Langlingen, am Flootgarten. Was hier an Einsätzen hängen geblieben ist, erzählt die Wehr selbst besser.",
+        "name": "Grüne Heide 18",
+        "latlon": (52.4951592, 10.4223315),
+        "kind": "Adresse",
+        "address": "Grüne Heide 18, Ettenbüttel",
+        "text": "Wohnhaus an der Grünen Heide 18. Die Karte fängt hier an. Die Straße ist in OpenStreetMap als feiner Kies geführt. Was in dem Haus und auf der Straße los ist, weiß diese Karte nicht.",
     },
 ]
 
-# Filled in from OpenStreetMap once the download is in: the river and the old station have no reliable house number.
+# The Aller has no house number. It is placed from its OpenStreetMap centre-line, if that line crosses the box.
 RIVER = {
     "name": "Aller",
     "kind": "Fluss",
-    "text": "Die Aller fließt nördlich am Dorf vorbei. Schon die erste Erwähnung Langlingens, 1257, nennt zu einem Hof der Herren von Meinersen eine Fischerei in der Aller, die visweyde.",
+    "text": "Die Aller fließt nördlich an Ettenbüttel vorbei. Westlich des Orts liegt die Oker. Die beiden Flüsse treffen sich im Kernort Müden, etwa fünf Kilometer nordwestlich von hier und außerhalb dieses Blatts.",
     "stop": "An der Aller",
-}
-STATION = {
-    "name": "Alter Bahnhof",
-    "kind": "Bahnstrecke · Personenverkehr bis 1981",
-    "text": "Langlingen lag an der Bahn von Gifhorn Stadt nach Celle. Der Personenverkehr endete 1981. Der Damm ist im Gelände noch zu sehen; die Züge fahren hier nicht mehr.",
-    "stop": "Der Bahnhof",
 }
 
 CATEGORIES = [
-    ("kirche", "Kirche und Gut", ["St. Johannis", "Rittergut Langlingen", "allerHaus", "Ehemaliges Küsterhaus"]),
-    ("dorf", "Fachwerk und Museum", ["Hauptstraße 46", "Dorfmuseum", "Hauptstraße 54", "Grundschule Langlingen"]),
-    ("flur", "Am Fluss und an der Bahn", ["Aller", "Alter Bahnhof", "Freiwillige Feuerwehr"]),
+    ("heide", "Grüne Heide", ["Grüne Heide 18"]),
+    ("hoefe", "Fachwerk", ["Allertal 15", "Hirtenwinkel 4", "Speicher Bokelberge"]),
+    ("fluss", "Am Fluss", ["Aller"]),
 ]
 
 INFO = ("note", "kind", "text", "address", "web", "more", "photo", "stop")
@@ -257,47 +197,10 @@ def aller_point():
                 x, y = wgs_to_rd(p["lat"], p["lon"])
                 if not in_box(x, y):
                     continue
-                # Prefer the stretch due north of the church, where the village meets the meadows.
-                score = abs(x - 587350) + max(0, 5823707 - y) * 0.25
+                # Prefer the stretch north of Allertal, where the houses meet the meadows.
+                score = abs(x - VILLAGE_X) + max(0, VILLAGE_Y - y) * 0.25
                 if best is None or score < best[0]:
                     best = (score, x, y)
-    return None if best is None else (best[1], best[2])
-
-
-def station_point():
-    """The old station if OSM marks one, otherwise a point on the disused railway near Bahnhofstraße."""
-    path = RAW / "osm_landmarks.json"
-    if path.exists():
-        for el in json.loads(path.read_text()).get("elements") or []:
-            tags = el.get("tags") or {}
-            if tags.get("railway") not in ("station", "halt"):
-                continue
-            center = el.get("center") or el
-            if "lat" not in center and el.get("geometry"):
-                g = el["geometry"]
-                center = g[len(g) // 2]
-            if "lat" not in center:
-                continue
-            x, y = wgs_to_rd(center["lat"], center["lon"])
-            if in_box(x, y):
-                return x, y
-    land = RAW / "osm_land.json"
-    if not land.exists():
-        return None
-    # Bahnhofstraße runs south of the church. The nearest rail point to that street is the stop.
-    target = address_xy("Bahnhofstraße 6") or (587000, 5823450)
-    best = None
-    for el in json.loads(land.read_text()).get("elements") or []:
-        tags = el.get("tags") or {}
-        if tags.get("railway") not in ("rail", "disused", "abandoned", "light_rail"):
-            continue
-        for p in el.get("geometry") or []:
-            x, y = wgs_to_rd(p["lat"], p["lon"])
-            if not in_box(x, y):
-                continue
-            dist = (x - target[0]) ** 2 + (y - target[1]) ** 2
-            if best is None or dist < best[0]:
-                best = (dist, x, y)
     return None if best is None else (best[1], best[2])
 
 
@@ -397,12 +300,6 @@ def main():
         taken[RIVER["name"]] = river
     else:
         print("Aller: not inside this box")
-    station = station_point()
-    if station:
-        add_place(out, rings, STATION, station)
-        taken[STATION["name"]] = station
-    else:
-        print("station: no railway inside this box")
 
     tree = monument_tree()
     if tree:
@@ -417,7 +314,7 @@ def main():
                 "name": label,
                 "kind": kind,
                 "note": "Naturdenkmal",
-                "text": f"{label}, in OpenStreetMap als Naturdenkmal geführt. Ob es die alte Dorfeiche ist, sagt die Karte nicht.",
+                "text": f"{label}, in OpenStreetMap als Naturdenkmal geführt. Mehr dazu weiß diese Karte nicht.",
             },
             (x, y),
         )

@@ -14,7 +14,7 @@ import urllib.parse
 
 import numpy as np
 
-from build_history import commons_thumb, download
+from build_history import fetch_photo
 from config import BUILD, CX, CY, VIEWS
 from geo import screen as project
 
@@ -65,7 +65,9 @@ def main():
         spot["x"], spot["y"] = round(h["x"], 1), round(h["y"], 1)
         spot["poly"] = [[[round(float(p[0]), 2), round(float(p[1]), 2)] for p in hull(view)] for view in pts]
         if "photo" in h:
-            spot["photo"] = photo(*h["photo"])
+            got = photo(*h["photo"])
+            if got:
+                spot["photo"] = got
         out.append(spot)
     cats = [{"key": c["key"], "label": c["label"], "spots": walk([n for n, s in enumerate(out) if s["name"] in c["names"]], out)}
             for c in lm["categories"]]
@@ -74,7 +76,7 @@ def main():
 
 
 def walk(idx, spots, start=None):
-    """Order a category as a walk: the place nearest the church first, then each time the nearest next one."""
+    """Order a category as a walk: the place nearest the house first, then each time the nearest next one."""
     if start is None:
         from config import HOME_X, HOME_Y
 
@@ -94,8 +96,11 @@ def photo(name, credit):
     """A Wikimedia Commons photo, downloaded once into data/build/photos/ (site.sh publishes that folder)."""
     dst = PHOTOS / f"{hashlib.md5(name.encode()).hexdigest()[:12]}.jpg"
     if not dst.exists():
+        data = fetch_photo(name)
+        if not data:
+            return None
         PHOTOS.mkdir(parents=True, exist_ok=True)
-        dst.write_bytes(download(commons_thumb(name)))
+        dst.write_bytes(data)
         subprocess.run(["magick", str(dst), "-resize", "640x640>", "-quality", "82", str(dst)], check=True)
     return {"src": f"photos/{dst.name}", "credit": credit, "url": f"https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(name)}"}
 

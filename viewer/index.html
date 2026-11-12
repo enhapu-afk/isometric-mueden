@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Isometrisch Langlingen</title>
-<meta name="description" content="Langlingen an der Aller in Miniatur, nachgebaut aus offenen Karten, Höhenmessungen und einem Luftbild.">
+<title>Isometrisch Müden (Aller)</title>
+<meta name="description" content="Ettenbüttel in Müden (Aller) in Miniatur, nachgebaut aus offenen Karten, Höhenmessungen und einem Luftbild.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://enhapu-afk.github.io/isometric-langlingen/">
-<meta property="og:title" content="Isometrisch Langlingen">
-<meta property="og:description" content="Langlingen an der Aller in Miniatur, nachgebaut aus offenen Karten, Höhenmessungen und einem Luftbild.">
-<meta property="og:image" content="https://enhapu-afk.github.io/isometric-langlingen/og.png">
+<meta property="og:url" content="https://enhapu-afk.github.io/isometric-mueden/">
+<meta property="og:title" content="Isometrisch Müden (Aller)">
+<meta property="og:description" content="Ettenbüttel in Müden (Aller) in Miniatur, nachgebaut aus offenen Karten, Höhenmessungen und einem Luftbild.">
+<meta property="og:image" content="https://enhapu-afk.github.io/isometric-mueden/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Langlingen als isometrische Pixelgrafik, mit der Kirche St. Johannis und dem Rittergut">
+<meta property="og:image:alt" content="Ettenbüttel in Müden (Aller) als isometrische Pixelgrafik, Fachwerkhäuser an der Aller">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://enhapu-afk.github.io/isometric-langlingen/og.png">
+<meta name="twitter:image" content="https://enhapu-afk.github.io/isometric-mueden/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -342,7 +342,7 @@
 </style>
 </head>
 <body>
-<div id="map" aria-label="Isometrische Karte von Langlingen" data-en-label="Isometric map of Langlingen"></div>
+<div id="map" aria-label="Isometrische Karte von Ettenbüttel" data-en-label="Isometric map of Ettenbüttel"></div>
 <svg width="0" height="0" style="position: absolute" aria-hidden="true">
   <filter id="dusk" color-interpolation-filters="sRGB">
     <feColorMatrix type="matrix" values="0.24 0.05 0.02 0 0  0.04 0.28 0.06 0 0.01  0.05 0.11 0.46 0 0.04  0 0 0 1 0"/>
@@ -353,11 +353,11 @@
 
 <section id="intro" class="panel">
   <div class="intro-head">
-    <h1>Langlingen</h1>
+    <h1>Müden (Aller)</h1>
     <button type="button" id="intro-toggle" aria-expanded="true" aria-controls="intro-body" aria-label="Menü ein- oder ausklappen" data-en-label="Show or hide the menu"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
   <div id="intro-body">
-  <p data-en="The village on the river Aller in miniature, church and manor in the middle, fields all around.">Das Dorf an der Aller in Miniatur, Kirche und Gut in der Mitte, ringsum die Felder.</p>
+  <p data-en="Ettenbüttel in miniature, on Grüne Heide. The Aller lies to the north. The main village, with St. Petri, is about five kilometres northwest and off this sheet.">Ettenbüttel in Miniatur, an der Grünen Heide. Die Aller liegt nördlich. Der Kernort mit St. Petri liegt etwa fünf Kilometer nordwestlich, außerhalb dieses Blatts.</p>
   <p class="long" data-en="Every house and every tree stands in its real place, rebuilt from public maps, height measurements and an aerial photo. Scroll or pinch to zoom, or look up an address below.">Jedes Haus und jeder Baum steht an seinem echten Platz, nachgebaut aus offenen Karten, Höhenmessungen und einem Luftbild. Scrollen oder ziehen zum Zoomen, oder unten eine Adresse suchen.</p>
   <form id="search" role="search">
     <input id="goto" list="place-list" placeholder="Zu einer Adresse oder einem Ort…" autocomplete="off" aria-label="Zu einer Adresse oder einem Ort" data-en-placeholder="Go to an address or place…" data-en-label="Go to an address or place">
@@ -366,17 +366,16 @@
   <div id="found" aria-live="polite"></div>
   <div id="legend"><span><i></i><b data-en="Walking junctions">Wanderknoten</b></span><span><i class="long"></i><b data-en="Walking routes">Wanderwege</b></span></div>
   <div id="places" role="group" aria-label="Direkt hin" data-en-label="Go to">
-    <button type="button" data-rd="587349.8,5823707.4" data-en="Village">Dorf</button>
-    <button type="button" data-place="St. Johannis" data-en="Church">Kirche</button>
-    <button type="button" data-place="Rittergut Langlingen" data-en="Manor">Gut</button>
-    <button type="button" data-place="Grundschule Langlingen" data-en="School">Schule</button>
-    <button type="button" data-place="Dorfmuseum" data-en="Museum">Museum</button>
+    <button type="button" data-rd="596560.3,5817064.4" data-en="Grüne Heide">Grüne Heide</button>
+    <button type="button" data-place="Allertal 15" data-en="Allertal 15">Allertal 15</button>
+    <button type="button" data-place="Hirtenwinkel 4" data-en="Hirtenwinkel 4">Hirtenwinkel 4</button>
+    <button type="button" data-place="Speicher Bokelberge" data-en="Bokelberge">Speicher</button>
     <button type="button" data-place="Aller" data-en="River">Aller</button>
     <button type="button" id="routes-toggle" aria-pressed="false" data-en="Walking routes">Wanderwege</button>
   </div>
   <div id="series" role="group" aria-label="Entdecken" data-en-label="Explore">
     <span data-en="Explore">Entdecken</span>
-    <button type="button" id="tour-toggle" aria-pressed="false" data-en="Langlingen back then">Langlingen früher</button>
+    <button type="button" id="tour-toggle" aria-pressed="false" data-en="Ettenbüttel back then">Ettenbüttel früher</button>
   </div>
   </div>
 </section>
@@ -391,7 +390,7 @@
 </div>
 
 <div id="readout" class="panel">
-  <div id="coords"><b>GPS</b> 52,5564° N · 10,2884° O</div>
+  <div id="coords"><b>GPS</b> 52,4952° N · 10,4223° O</div>
   <div id="scale">1 pixel = 25 cm</div>
   <div class="credits" data-en-html="Data: LoD2, DGM1, DOM1 and DOP20 from the &lt;a href=&quot;https://www.lgln.niedersachsen.de&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LGLN&lt;/a&gt;, CC BY 4.0, and &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;OpenStreetMap&lt;/a&gt;">Daten: LoD2, DGM1, DOM1 und DOP20 vom <a href="https://www.lgln.niedersachsen.de" target="_blank" rel="noopener">LGLN</a>, CC BY 4.0, und <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></div>
 </div>
@@ -401,7 +400,7 @@
 <button type="button" id="make" aria-haspopup="dialog" data-en="Make your own village">Mach dein eigenes Dorf</button>
 <dialog id="make-dialog" aria-labelledby="make-title">
   <h2 id="make-title" data-en="Make this for your own village">Mach das für dein eigenes Dorf</h2>
-  <p class="by" data-en-html="This map of Langlingen follows &lt;a href=&quot;https://github.com/jankeesvw/isometric-helenaveen&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Isometric Helenaveen&lt;/a&gt; by &lt;a href=&quot;https://x.com/jankeesvw&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@jankeesvw&lt;/a&gt;. The renderer and the method are his; the data are the open geodata of Lower Saxony.">Diese Karte von Langlingen folgt <a href="https://github.com/jankeesvw/isometric-helenaveen" target="_blank" rel="noopener">Isometrisch Helenaveen</a> von <a href="https://x.com/jankeesvw" target="_blank" rel="noopener">@jankeesvw</a>. Renderer und Verfahren stammen von dort; die Daten sind die offenen Geodaten Niedersachsens.</p>
+  <p class="by" data-en-html="This map of Ettenbüttel follows &lt;a href=&quot;https://github.com/jankeesvw/isometric-helenaveen&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Isometric Helenaveen&lt;/a&gt; by &lt;a href=&quot;https://x.com/jankeesvw&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@jankeesvw&lt;/a&gt;. The renderer and the method are his; the data are the open geodata of Lower Saxony.">Diese Karte von Ettenbüttel folgt <a href="https://github.com/jankeesvw/isometric-helenaveen" target="_blank" rel="noopener">Isometrisch Helenaveen</a> von <a href="https://x.com/jankeesvw" target="_blank" rel="noopener">@jankeesvw</a>. Renderer und Verfahren stammen von dort; die Daten sind die offenen Geodaten Niedersachsens.</p>
   <p data-en="Want one of your own village or town, anywhere in the world? Paste this prompt into Claude Code or another coding agent and fill in your place. The agent finds the open data for your country: buildings, heights, aerial photos and OpenStreetMap. Then tell it the stories that only the people who live there know.">Willst du auch eine von deinem Dorf oder deiner Stadt, irgendwo auf der Welt? Füg diesen Auftrag in Claude Code oder einen anderen Coding-Agenten ein und trag deinen Ort ein. Der Agent sucht die offenen Daten deines Landes dazu: Gebäude, Höhen, Luftbilder und OpenStreetMap. Erzähl ihm danach die Geschichten, die nur die Leute kennen, die dort wohnen.</p>
   <pre id="make-prompt" data-en="Make an isometric pixel-art map of [your village or town, and the country], like Isometric Helenaveen: https://jankeesvw.github.io/isometric-helenaveen/
 
@@ -442,13 +441,13 @@ Danach:
 Arbeit schrittweise, prüf die Lizenzen der Daten, und frag mich nach den Geschichten und Orten, die nur die Leute kennen, die dort wohnen.</pre>
   <nav>
     <button type="button" id="make-copy" data-en="Copy the prompt">Auftrag kopieren</button>
-    <a href="https://github.com/enhapu-afk/isometric-langlingen" target="_blank" rel="noopener" data-en="Code on GitHub">Code auf GitHub</a>
+    <a href="https://github.com/enhapu-afk/isometric-mueden" target="_blank" rel="noopener" data-en="Code on GitHub">Code auf GitHub</a>
     <button type="button" class="close" id="make-close" data-en="Close">Schließen</button>
   </nav>
 </dialog>
 <div id="tip" hidden></div>
 
-<section id="tour" class="card" hidden aria-live="polite" aria-label="Rundfahrt Langlingen früher" data-en-label="Tour: Langlingen back then">
+<section id="tour" class="card" hidden aria-live="polite" aria-label="Rundfahrt Ettenbüttel früher" data-en-label="Tour: Ettenbüttel back then">
   <div class="card-head"><span id="tour-year"></span><span id="tour-count"></span></div>
   <h2 id="tour-title"></h2>
   <figure id="tour-figure" hidden><div id="tour-frame" class="frame"><img id="tour-img" alt=""></div><div id="tour-dots"></div><figcaption id="tour-credit"></figcaption></figure>
@@ -497,7 +496,7 @@ Arbeit schrittweise, prüf die Lizenzen der Daten, und frag mich nach den Geschi
   const ATTRS = [['enLabel', 'aria-label'], ['enTitle', 'title'], ['enPlaceholder', 'placeholder']];
   function applyLang() {
     document.documentElement.lang = LANG;
-    document.title = L('Isometrisch Langlingen', 'Isometric Langlingen');
+    document.title = L('Isometrisch Müden (Aller)', 'Isometric Müden (Aller)');
     for (const [en, nl, prop] of SWAPS) {
       for (const el of document.querySelectorAll(`[data-${en.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase())}]`)) {
         if (el.dataset[nl] === undefined) el.dataset[nl] = el[prop];
@@ -722,7 +721,7 @@ Arbeit schrittweise, prüf die Lizenzen der Daten, und frag mich nach den Geschi
       id: 'map',
       // The map, and over it once more its buildings and trees on a transparent layer (map.json "objects"), so that
       // cars and walkers behind them can be drawn in between.
-      tileSources: [first.tiles || 'langlingen_files/', ...(first.objects ? [first.objects] : [])].map(dzi),
+      tileSources: [first.tiles || 'mueden_files/', ...(first.objects ? [first.objects] : [])].map(dzi),
       silenceMultiImageWarnings: true,
       showNavigationControl: false,
       showNavigator: true,

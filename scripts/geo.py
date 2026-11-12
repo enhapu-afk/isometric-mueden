@@ -1,6 +1,6 @@
 """ETRS89 / UTM zone 32N (EPSG:25832) <-> WGS84, and the isometric projection.
 
-Langlingen is at about 10.3 degrees east, so the metric grid is UTM zone 32.
+Ettenbüttel, in Müden (Aller), is at about 10.4 degrees east, so the metric grid is UTM zone 32.
 The Dutch names wgs_to_rd and rd_to_wgs remain as aliases: every other script
 still speaks of "RD" where it means "the map's metre coordinates".
 

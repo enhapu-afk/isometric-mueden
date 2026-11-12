@@ -1,9 +1,9 @@
-"""Langlingen früher: a short tour of the public history, as an overlay for the viewer.
+"""Ettenbüttel früher: a short tour of the public record, as an overlay for the viewer.
 
-Texts are written for this map from the village articles, the church page and the
-listed-building record. Photos are Wikimedia Commons files with an open licence
-(CC BY-SA), downloaded once and published with a credit. A missing photo does not
-stop the build.
+Texts are written for this map from the municipality's articles and the
+Niedersachsen monument register. Photos are Wikimedia Commons files with an open
+licence, downloaded once and published with a credit. A missing photo does not
+stop the build. St. Petri stands in the Kernort, off this sheet, so it is not a stop.
 
 Output: data/build/history.json and data/build/history/*.jpg
 """
@@ -20,71 +20,58 @@ import urllib.request
 from config import BUILD
 from geo import wgs_to_rd
 
-WIKI = "https://de.wikipedia.org/wiki/Langlingen"
-CHURCH = "https://de.wikipedia.org/wiki/St._Johannis_(Langlingen)"
-MANOR = "https://de.wikipedia.org/wiki/Rittergut_Langlingen"
-KIRCHE = "https://kirche-langlingen.wir-e.de/aktuelles"
+WIKI = "https://de.wikipedia.org/wiki/Ettenb%C3%BCttel"
+MUEDEN = "https://de.wikipedia.org/wiki/M%C3%BCden_(Aller)"
+DENKMAL = "https://denkmalatlas.niedersachsen.de/viewer/metadata"
 
-# Coordinates are WGS84. Stops that depend on the river or the railway take their
-# point from landmarks.json, which found them in OpenStreetMap.
+# Coordinates are WGS84. Building stops take their point from landmarks.json.
 STOPS = [
     {
-        "year": "1257",
-        "title": "Langlingen",
-        "latlon": (52.556418, 10.288447),
+        "year": "1974",
+        "title": "Ettenbüttel",
+        "latlon": (52.500937, 10.408575),
         "zoom": 0.28,
-        "text": "1257 steht der Ort zum ersten Mal in einer Urkunde, als Langelege. Die Herren von Meinersen hielten hier einen Hof und den Hof Stegemann, dazu eine Fischerei in der Aller, als Lehen von Braunschweig-Lüneburg. Der Name lief über Langlingen zu der Form, die das Dorf heute trägt.",
+        "text": "Ettenbüttel ist ein Ortsteil von Müden (Aller) im Landkreis Gifhorn, südöstlich des Kernorts. Am 1. März 1974 wurde es mit Dieckhorst, Flettmar und Hahnenhorn nach Müden eingemeindet. Am 1. Mai 2024 lebten hier 644 Menschen. 1668 notierte der Müder Pastor Heinrich Hoffmann, die Einwohner von Ettenbüttel zahlten noch den Zehnten, weil der Ort früher zur Pfarrei Müden gehört hatte. St. Petri, die Kirche des Kernorts, liegt etwa fünf Kilometer nordwestlich und nicht auf diesem Blatt.",
+        "photos": [("Ettenbüttel W.jpg", "Ettenbüttel, Kirchenfan, CC0")],
         "source": ("Wikipedia", WIKI),
-        "more": WIKI,
+        "more": MUEDEN,
     },
     {
-        "year": "1338",
-        "title": "St. Johannis",
-        "latlon": (52.556418, 10.288447),
-        "h": 12,
-        "text": "Die Pfarrei wurde 1257 von Wienhausen getrennt. Im alten Chor saß ein Stein mit der Jahreszahl 1338. 1668 kamen ein hölzerner Anbau im Westen und ein verschalter Dachreiter dazu, 1783 erneuert. Von 1994 bis 1996 legte eine Ausbesserung den gemalten Engelhimmel an der Decke wieder frei.",
-        "photos": [
-            ("Kirche Langlingen.jpg", "St. Johannis, Clemensfranz, CC BY-SA 3.0"),
-            ("Kirche Langlingen 1.jpg", "St. Johannis, ClausNe, CC BY-SA 4.0"),
-        ],
-        "source": ("Wikipedia", CHURCH),
-        "more": KIRCHE,
+        "year": "Baudenkmal",
+        "title": "Allertal 15",
+        "place": "Allertal 15",
+        "h": 8,
+        "text": "An der Allertal 15, der Landesstraße durch Ettenbüttel, steht ein eingeschossiges Vierständer-Hallenhaus mit Ziegelausfachung und Krüppelwalmdach, die Einfahrt in der Mitte der Längsseite. Es ist ein eingetragenes Baudenkmal. Wann es gebaut wurde, sagt diese Karte nicht.",
+        "photos": [("Ettenbüttel Allertal 15 NLD 33934218.jpg", "Allertal 15, Simone Thulke, CC BY 4.0")],
+        "source": ("Denkmalatlas Niedersachsen", f"{DENKMAL}/33934218/1/-/"),
+        "more": f"{DENKMAL}/33934218/1/-/",
     },
     {
-        "year": "1619",
-        "title": "Fachwerk an der Hauptstraße",
-        "latlon": (52.5552536, 10.2876928),
-        "h": 7,
-        "text": "An der Hauptstraße steht ein Wohn- und Wirtschaftsgebäude von 1619, in Fachwerk, und ein Stück weiter eines von 1776. Beide sind eingetragene Baudenkmale. Das Dorfmuseum sitzt dazwischen, in der Nummer 44.",
-        "source": ("Denkmalatlas Niedersachsen", "https://denkmalatlas.niedersachsen.de/"),
-        "more": WIKI,
+        "year": "Baudenkmal",
+        "title": "Hirtenwinkel 4",
+        "place": "Hirtenwinkel 4",
+        "h": 8,
+        "text": "Hirtenwinkel 4 ist ebenfalls ein Vierständer-Hallenhaus, mit Ziegelausfachung unter einem Halbwalmdach und einem quergestellten Stallanbau. Eingetragenes Baudenkmal.",
+        "photos": [("Ettenbüttel Hirtenwinkel 04 NLD 33934242.jpg", "Hirtenwinkel 4, Simone Thulke, CC BY 4.0")],
+        "source": ("Denkmalatlas Niedersachsen", f"{DENKMAL}/33934242/1/-/"),
+        "more": f"{DENKMAL}/33934242/1/-/",
     },
     {
-        "year": "1725",
-        "title": "Rittergut",
-        "latlon": (52.557263, 10.288209),
-        "h": 10,
-        "text": "Ernst Wilhelm von Spörcken ließ 1725 das barocke Herrenhaus bauen: Fachwerk unter Putz, Mansarddach, ein Türmchen auf dem rechten Flügel. Die Familie hatte das Gut seit dem 14. Jahrhundert. 1827 kaufte der Pächter Mylius es, und die Familie bewirtschaftet es noch. Der Park am Franzosengraben ist nicht öffentlich.",
-        "photos": [("Gutshof Langlingen.jpg", "Rittergut Langlingen, Clemensfranz, CC BY-SA 3.0")],
-        "source": ("Wikipedia", MANOR),
-        "more": MANOR,
-    },
-    {
-        "year": "1981",
-        "title": "Der Bahnhof",
-        "place": "Alter Bahnhof",
-        "h": 3,
-        "zoom": 0.7,
-        "text": "Langlingen lag an der Bahn von Gifhorn Stadt nach Celle. Der Personenverkehr endete 1981. Der Damm liegt noch im Gelände.",
-        "source": ("Wikipedia", WIKI),
-        "more": WIKI,
+        "year": "Baudenkmal",
+        "title": "Speicher Bokelberge",
+        "place": "Speicher Bokelberge",
+        "h": 8,
+        "text": "In Bokelberge, nördlich von Ettenbüttel, steht ein zweigeschossiger Fachwerkspeicher mit vorkragendem Obergeschoss unter einem Satteldach. Eingetragenes Baudenkmal.",
+        "photos": [("Ettenbüttel Bockelberg 02 NLD 33934711.jpg", "Speicher Bokelberge, Simone Thulke, CC BY 4.0")],
+        "source": ("Denkmalatlas Niedersachsen", f"{DENKMAL}/33934711/1/-/"),
+        "more": f"{DENKMAL}/33934711/1/-/",
     },
     {
         "year": "heute",
-        "title": "Langlingen heute",
-        "latlon": (52.556418, 10.288447),
-        "zoom": 0.35,
-        "text": "Ein Dorf an der Aller, Gemeinde im Landkreis Celle, seit 1998 mit Czarne in Polen verbunden. Ende der Rundfahrt. Was nur die Leute hier wissen, fehlt noch: das Fest, die Badestelle, der Name der Eiche.",
+        "title": "Ettenbüttel heute",
+        "place": "Grüne Heide 18",
+        "zoom": 0.45,
+        "text": "Die Karte öffnet am Wohnhaus Grüne Heide 18. Auf diesem Blatt liegen Ettenbüttel, die Grüne Heide und Bokelberge. Der Kernort Müden mit St. Petri liegt etwa fünf Kilometer nordwestlich, außerhalb. Was nur die Leute hier wissen, fehlt noch: das Fest, die Badestelle, die Namen der Höfe.",
         "source": ("Wikipedia", WIKI),
         "more": WIKI,
     },
@@ -92,7 +79,7 @@ STOPS = [
 
 
 def download(url, tries=6):
-    req = urllib.request.Request(url, headers={"User-Agent": "isometric-langlingen/0.1 (personal map)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "isometric-mueden/0.1 (personal map)"})
     for attempt in range(tries):
         try:
             data = urllib.request.urlopen(req, timeout=60).read()
